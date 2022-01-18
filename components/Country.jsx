@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { shuffleArray } from "../helpers";
 
 const Countries = ({ countries }) => {
+  const [allCountries, setAllCountries] = useState(countries);
   const [remainingCountries, setRemainingCountries] = useState(
     countries.slice(0, 15)
   );
@@ -23,13 +24,14 @@ const Countries = ({ countries }) => {
   };
 
   const fillCountries = () => {
-    countries = countries.slice(15, countries.length);
-    setRemainingCountries(countries.slice(0, 15));
-    setShuffled(shuffleArray(countries.slice(0, 15)));
+    setAllCountries(allCountries.slice(15, allCountries.length));
+    setRemainingCountries(allCountries.slice(0, 15));
+    setShuffled(shuffleArray(allCountries.slice(0, 15)));
   };
 
   useEffect(() => {
     if (!remainingCountries.length) {
+      if (!allCountries.length) return;
       fillCountries();
     }
   }, [remainingCountries]);
@@ -50,9 +52,21 @@ const Countries = ({ countries }) => {
   return (
     <div className="game-container">
       <div className="flags-container">
+        {!remainingCountries.length ? (
+          <>
+            <h3>No more countries, Do you want to start again?</h3>
+            <button className="country-option">Start again</button>
+          </>
+        ) : null}
         {remainingCountries.map((i) => (
           <img
-            className={i.name.common === selected ? "flags-hover" : ""}
+            className={
+              i.name.common === selected
+                ? "flags-hover"
+                : selected
+                ? "hide"
+                : ""
+            }
             onClick={() => setSelected(i.name.common)}
             src={i.flags.png}
             key={i.name.common}
@@ -73,6 +87,9 @@ const Countries = ({ countries }) => {
             {country.name.common}
           </button>
         ))}
+        <button className="new-countries-btn" onClick={fillCountries}>
+          New countries
+        </button>
       </div>
     </div>
   );

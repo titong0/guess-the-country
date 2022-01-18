@@ -1,3 +1,15 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 35px;
+  width: 100%;
+  font: 1.5rem serif;
+  color: black;
+  background-color: hsl(174, 98%, 40%);
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
@@ -6,12 +18,13 @@
   width: 100%;
   padding: 1rem;
   background-color: hsl(0, 0%, 15%);
+  min-height: 100vh;
 }
 
 .flags-container {
   display: grid;
   gap: 0.3rem;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   align-items: center;
 }
 .flags-container > img {
@@ -29,7 +42,7 @@
 
 .options-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.3rem;
 }
 .country-option {
@@ -39,22 +52,61 @@
   font-size: 1rem;
   border: 1px solid rgb(189, 189, 189);
   border-radius: 4px;
-  background-color: hsl(232, 45%, 40%);
+  background-color: #4657cd;
   color: #eee;
   cursor: pointer;
+  transition: background-color 300ms;
+  animation: fadeIn 800ms;
+}
+
+.country-option:disabled {
+  cursor: auto;
+  background-color: hsl(232, 45%, 20%);
+}
+
+.new-countries-btn {
+  color: black;
+  font-family: -apple-system, "Segoe UI", "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 1.2rem;
+  border: 1px solid;
+  border-radius: 15px;
+  background: #fd8062;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.new-countries-btn:active {
+  background-color: hsl(12, 97%, 62%);
+}
+
+.hide {
+  display: none;
 }
 
 @media screen and (min-width: 1000px) {
   .flags-container {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 160px));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 160px));
   }
   .options-container {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 160px));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 160px));
+  }
+  .hide {
+    display: block;
   }
 }
 
 .flash {
   animation: flash 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 @keyframes flash {

@@ -1,7 +1,6 @@
 html {
   background-color: #121212;
   color: #eee;
-  min-height: 100vh;
 }
 
 img {
@@ -12,6 +11,15 @@ h1,
 p {
   margin: 0.8rem;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: currentColor;
+}
+
 * {
   font-family: Georgia, "Times New Roman", Times, serif;
   box-sizing: border-box;
