@@ -1,0 +1,20 @@
+html {
+  background-color: #121212;
+  color: #eee;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+h1,
+p {
+  margin: 0.8rem;
+}
+* {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
