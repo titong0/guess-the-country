@@ -3,19 +3,17 @@ import { shuffleArray } from "../helpers";
 
 const Countries = ({ countries }) => {
   const [allCountries, setAllCountries] = useState(countries);
-  const [remainingCountries, setRemainingCountries] = useState(
+  const [currentCountries, setCurrentCountries] = useState(
     countries.slice(0, 15)
   );
-  const [shuffled, setShuffled] = useState(remainingCountries);
+  const [shuffled, setShuffled] = useState(currentCountries);
   const [selected, setSelected] = useState(null);
 
   const removeCountry = (name) => {
     setSelected(null);
     if (name !== selected) return;
 
-    setRemainingCountries(
-      remainingCountries.filter((i) => i.name.common !== name)
-    );
+    setCurrentCountries(currentCountries.filter((i) => i.name.common !== name));
     setShuffled(shuffled.filter((i) => i.name.common !== name));
     document.querySelector("html").classList += "flash";
     setTimeout(() => {
@@ -25,19 +23,27 @@ const Countries = ({ countries }) => {
 
   const fillCountries = () => {
     setAllCountries(allCountries.slice(15, allCountries.length));
-    setRemainingCountries(allCountries.slice(0, 15));
+    setCurrentCountries(allCountries.slice(0, 15));
     setShuffled(shuffleArray(allCountries.slice(0, 15)));
   };
 
+  const newCountries = () => {
+    const newOrder = shuffleArray(countries);
+    setAllCountries(newOrder);
+    setCurrentCountries(newOrder.slice(0, 15));
+    setShuffled(shuffleArray(newOrder.slice(0, 15)));
+  };
+
   useEffect(() => {
-    if (!remainingCountries.length) {
+    if (!currentCountries.length) {
       if (!allCountries.length) return;
       fillCountries();
     }
-  }, [remainingCountries]);
+  }, [currentCountries]);
 
   useEffect(() => {
-    setShuffled(shuffleArray(remainingCountries));
+    setShuffled(shuffleArray(currentCountries));
+
     const handleClickOutside = (click) => {
       if (click.composedPath()[0].id !== "countryOption") {
         setSelected(null);
@@ -52,26 +58,31 @@ const Countries = ({ countries }) => {
   return (
     <div className="game-container">
       <div className="flags-container">
-        {!remainingCountries.length ? (
+        {!currentCountries.length ? (
           <>
             <h3>No more countries, Do you want to start again?</h3>
-            <button className="country-option">Start again</button>
+            <button className="country-option" onClick={newCountries}>
+              Start again
+            </button>
           </>
         ) : null}
-        {remainingCountries.map((i) => (
-          <img
-            className={
-              i.name.common === selected
-                ? "flags-hover"
-                : selected
-                ? "hide"
-                : ""
-            }
-            onClick={() => setSelected(i.name.common)}
-            src={i.flags.png}
-            key={i.name.common}
-            id="countryOption"
-          />
+        {currentCountries.map((i) => (
+          <button onClick={() => setSelected(i.name.common)}>
+            <img
+              className={
+                i.name.common === selected
+                  ? "flags-hover"
+                  : selected
+                  ? "hide"
+                  : ""
+              }
+              src={i.flags.png}
+              key={i.name.common}
+              tabIndex="0"
+              id="countryOption"
+              alt=""
+            />
+          </button>
         ))}
       </div>
       <div className="options-container">

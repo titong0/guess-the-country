@@ -10,7 +10,7 @@ const Index = (props) => {
           <img
             src="https://www.svgrepo.com/show/332084/github.svg"
             alt="Github logo"
-            width="30"
+            width="45"
           />
         </a>
       </nav>

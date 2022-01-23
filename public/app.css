@@ -1,9 +1,9 @@
 nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem;
-  height: 35px;
+  height: 50px;
   width: 100%;
   font: 1.5rem serif;
   color: black;
@@ -25,15 +25,20 @@ nav {
   display: grid;
   gap: 0.3rem;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  align-items: center;
+  align-items: flex-end;
 }
-.flags-container > img {
+
+.flags-container button {
+  background-color: transparent;
+  border: 0;
+}
+
+.flags-container img {
   border-radius: 1px;
 }
 
-.flags-container > img:hover {
+.flags-container img:hover {
   box-shadow: white 2px 2px 6px;
-  cursor: pointer;
 }
 
 .flags-hover {
@@ -45,6 +50,7 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.3rem;
 }
+
 .country-option {
   padding: 0.5rem;
   font-family: -apple-system, "Segoe UI", "Open Sans", "Helvetica Neue",
@@ -52,7 +58,7 @@ nav {
   font-size: 1rem;
   border: 1px solid rgb(189, 189, 189);
   border-radius: 4px;
-  background-color: #4657cd;
+  background-color: hsl(232, 57%, 45%);
   color: #eee;
   cursor: pointer;
   transition: background-color 300ms;
@@ -61,7 +67,7 @@ nav {
 
 .country-option:disabled {
   cursor: auto;
-  background-color: hsl(232, 45%, 20%);
+  background-color: transparent;
 }
 
 .new-countries-btn {
@@ -71,9 +77,9 @@ nav {
   font-size: 1.2rem;
   border: 1px solid;
   border-radius: 15px;
-  background: #fd8062;
+  background-color: hsl(12, 80%, 62%);
   cursor: pointer;
-  transition: 300ms;
+  transition: 200ms;
 }
 
 .new-countries-btn:active {
