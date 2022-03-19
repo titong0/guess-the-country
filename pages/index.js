@@ -8,6 +8,10 @@ const Index = (props) => {
     <>
       <Head>
         <title>Guess the country flags</title>
+        <meta
+          name="description"
+          content="Match the country flags with their names"
+        />
       </Head>
       <nav>
         <a href="https://restcountries.com/">API</a>
