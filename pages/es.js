@@ -48,6 +48,15 @@ const Index = (props) => {
         />
 
         {/* <!-- Meta Tags Generated via https://www.opengraph.xyz --> */}
+        <meta
+          property="og:image:secure_url"
+          content="https://guess-the-country-flag.netlify.app/thumbnail.png"
+        />
+
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="Multiple flags" />
+        <meta property="og:image:width" content="1600" />
+        <meta property="og:image:height" content="800" />
       </Head>
       <nav>
         <a href="https://restcountries.com/">API</a>
