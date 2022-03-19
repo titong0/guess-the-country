@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
+import { getCountries, shuffleArray } from "../helpers";
 import Countries from "../components/Country";
-import { shuffleArray, getCountries } from "../helpers";
 
 const Index = (props) => {
   return (
     <>
       <Head>
-        <title>Guess the country flags</title>
+        <title>Adivina las banderas</title>
       </Head>
       <nav>
         <a href="https://restcountries.com/">API</a>
@@ -18,13 +18,10 @@ const Index = (props) => {
             width="45"
           />
         </a>
-        <Link href="/es">Version en español</Link>
+        <Link href="/">English version</Link>
       </nav>
-      <h1>Guess the country flags </h1>
-      <p>
-        Click on the country flag first. Afterwards, select the option you think
-        is correct from the buttons below
-      </p>
+      <h1>Adivina las banderas con sus nombres</h1>
+      <p>Hacé click en la bandera, después en su nombre.</p>
       <div>
         <Countries countries={props.countries} />
       </div>
@@ -33,12 +30,11 @@ const Index = (props) => {
 };
 
 export const getStaticProps = async () => {
-  const data = await getCountries();
-
+  const data = await getCountries("spa");
   return {
     props: {
       countries: shuffleArray(data),
-      newCountriesMsg: "You ran out of countries. Starting again",
+      newCountriesMsg: "Se terminaron los paises",
     },
   };
 };

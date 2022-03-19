@@ -7,3 +7,24 @@ export const shuffleArray = (array) => {
   }
   return copy;
 };
+
+export const getCountries = async (lang) => {
+  const res = await fetch("https://restcountries.com/v3.1/all");
+  const data = await res.json();
+
+  // english names are in country.name.common for some reason
+  if (!lang) {
+    return data.map((country) => {
+      return {
+        name: country.name.common,
+        flagSrc: country.flags.png,
+      };
+    });
+  }
+  return data.map((country) => {
+    return {
+      name: country.translations[lang].common,
+      flagSrc: country.flags.png,
+    };
+  });
+};
