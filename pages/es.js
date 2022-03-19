@@ -8,7 +8,46 @@ const Index = (props) => {
     <>
       <Head>
         <title>Adivina las banderas</title>
+
         <meta name="description" content="Uní las banderas con sus nombres" />
+
+        {/* <!-- Facebook Meta Tags --/> */}
+        <meta
+          property="og:url"
+          content="https://guess-the-country-flag.netlify.app/es/"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Adivina las banderas" />
+        <meta
+          property="og:description"
+          content="Uní las banderas con sus nombres"
+        />
+        <meta
+          property="og:image"
+          content="https://guess-the-country-flag.netlify.app/thumbnail.png"
+        />
+
+        {/* <!-- Twitter Meta Tags --/> */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:domain"
+          content="guess-the-country-flag.netlify.app"
+        />
+        <meta
+          property="twitter:url"
+          content="https://guess-the-country-flag.netlify.app/es/"
+        />
+        <meta name="twitter:title" content="Adivina las banderas" />
+        <meta
+          name="twitter:description"
+          content="Uní las banderas con sus nombres"
+        />
+        <meta
+          name="twitter:image"
+          content="https://guess-the-country-flag.netlify.app/thumbnail.png"
+        />
+
+        {/* <!-- Meta Tags Generated via https://www.opengraph.xyz --> */}
       </Head>
       <nav>
         <a href="https://restcountries.com/">API</a>
