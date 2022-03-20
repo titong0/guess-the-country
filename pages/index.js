@@ -68,7 +68,14 @@ const Index = (props) => {
             width="45"
           />
         </a>
-        <Link href="/es">Version en español</Link>
+        <Link href="/es">
+          <img
+            src="/argentina.jpg"
+            alt="Argentinian flag"
+            width="55"
+            height="35"
+          />
+        </Link>
       </nav>
       <h1>Guess the country flags </h1>
       <p>
@@ -76,7 +83,10 @@ const Index = (props) => {
         is correct from the buttons below
       </p>
       <div>
-        <Countries countries={props.countries} />
+        <Countries
+          APIcountries={props.countries}
+          newCountriesMsg="No more countries. Start again?"
+        />
       </div>
     </>
   );
@@ -88,7 +98,6 @@ export const getStaticProps = async () => {
   return {
     props: {
       countries: shuffleArray(data),
-      newCountriesMsg: "You ran out of countries. Starting again",
     },
   };
 };

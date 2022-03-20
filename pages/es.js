@@ -65,14 +65,20 @@ const Index = (props) => {
             src="https://www.svgrepo.com/show/332084/github.svg"
             alt="Github logo"
             width="45"
+            height="45"
           />
         </a>
-        <Link href="/">English version</Link>
+        <Link href="/">
+          <img src="/english.png" alt="British flag" width="76" height="38" />
+        </Link>
       </nav>
       <h1>Adivina las banderas con sus nombres</h1>
       <p>Hacé click en la bandera, después en su nombre.</p>
       <div>
-        <Countries countries={props.countries} />
+        <Countries
+          APIcountries={props.countries}
+          newCountriesMsg={"No hay más países. Empezar de nuevo? "}
+        />
       </div>
     </>
   );
@@ -82,8 +88,7 @@ export const getStaticProps = async () => {
   const data = await getCountries("spa");
   return {
     props: {
-      countries: shuffleArray(data),
-      newCountriesMsg: "Se terminaron los paises",
+      countries: data,
     },
   };
 };

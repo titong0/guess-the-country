@@ -1,30 +1,22 @@
-const CountryNames = ({
-  shuffledNames,
-  selected,
-  removeCountry,
-  nextCountries,
-}) => {
-  const remover = (name) => {
-    if (name === selected) {
-      removeCountry(name);
-    }
-  };
-
+const CountryNames = ({ countries, selected }) => {
   return (
     <div className="options-container">
-      {shuffledNames.map((country) => (
+      {countries.shuffledNames.map((country) => (
         <button
           key={country.name}
           className="country-option"
           onClick={() => {
-            remover(country.name);
+            countries.removeCountry(selected, country.name);
           }}
           disabled={!selected}
         >
           {country.name}
         </button>
       ))}
-      <button className="skip-countries country-option " onClick={nextCountries}>
+      <button
+        className="skip-country btn-primary"
+        onClick={countries.nextCountries}
+      >
         {"->"}
       </button>
     </div>

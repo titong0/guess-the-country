@@ -17,14 +17,14 @@ export const getCountries = async (lang) => {
     return data.map((country) => {
       return {
         name: country.name.common,
-        flagSrc: country.flags.png,
+        flagSrc: country.flags.svg,
       };
     });
   }
   return data.map((country) => {
     return {
       name: country.translations[lang].common,
-      flagSrc: country.flags.png,
+      flagSrc: country.flags.svg,
     };
   });
 };

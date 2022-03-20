@@ -17,17 +17,18 @@ const Flags = ({ countries, selected, setSelected }) => {
     <>
       {countries.map((i) => (
         <button
+          className={
+            i.name === selected ? "flags-hover" : selected ? "hide" : ""
+          }
           onKeyDown={(e) => (e.code === "Enter" ? setSelected(i.name) : null)}
           onClick={() => setSelected(i.name)}
           key={i.name}
           id="countryOption"
         >
           <img
-            className={
-              i.name === selected ? "flags-hover" : selected ? "hide" : ""
-            }
             key={i.name.common}
-            width="150"
+            // width="120"
+            // height="80"
             src={i.flagSrc}
             id="countryOption"
             alt=""
