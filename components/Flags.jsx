@@ -14,7 +14,7 @@ const Flags = ({ countries, selected, setSelected }) => {
   }, []);
 
   return (
-    <>
+    <div className="flags-container">
       {countries.map((i) => (
         <button
           className={
@@ -27,15 +27,13 @@ const Flags = ({ countries, selected, setSelected }) => {
         >
           <img
             key={i.name.common}
-            // width="120"
-            // height="80"
             src={i.flagSrc}
             id="countryOption"
             alt=""
           />
         </button>
       ))}
-    </>
+    </div>
   );
 };
 

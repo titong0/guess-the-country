@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import Countries from "../components/Country";
+import Game from "../components/Game";
 import { shuffleArray, getCountries } from "../helpers";
 
 const Index = (props) => {
@@ -82,12 +82,7 @@ const Index = (props) => {
         Click on the country flag first. Afterwards, select the option you think
         is correct from the buttons below
       </p>
-      <div>
-        <Countries
-          APIcountries={props.countries}
-          newCountriesMsg="No more countries. Start again?"
-        />
-      </div>
+      <Game countries={props.countries}>Amount of countries:</Game>
     </>
   );
 };

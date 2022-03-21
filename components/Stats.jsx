@@ -18,10 +18,6 @@ const Stats = ({ stats }) => {
     </div>
   );
 };
-/**
- *
- * @param {Date} time
- */
 const FormatTime = (time) => {
   time = time.getTime();
   const diff = new Date().getTime() - time;

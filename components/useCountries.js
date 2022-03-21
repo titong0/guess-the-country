@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { shuffleArray } from "../helpers";
 
-const remove = (arr, item) => {
-  return [...arr].filter((i) => i.name !== country);
-};
-
-export const useCountries = (countries) => {
+export const useCountries = (countries, difficulty, start) => {
+  countries = countries.slice(0, difficulty);
   const [allCountries, setAllCountries] = useState(countries);
   const [current, setCurrent] = useState([...countries].slice(0, 15));
   const [shuffledNames, setShuffledNames] = useState(shuffleArray(current));
+
   const [stats, setStats] = useState({
     misses: 0,
     correct: 0,
     startTime: new Date(),
   });
-  console.log(stats);
+
   const removeCountry = (selected, country) => {
     if (country !== selected) {
       const copy = { ...stats };
@@ -25,6 +23,12 @@ export const useCountries = (countries) => {
     const copy = { ...stats };
     copy.correct++;
     setStats(copy);
+
+    if (current.length === 1) {
+      console.log(current);
+      setAllCountries(allCountries.splice(1));
+      return nextCountries();
+    }
     setCurrent([...current].filter((i) => i.name !== country));
     setShuffledNames([...shuffledNames].filter((i) => i.name !== country));
     setAllCountries([...allCountries].filter((i) => i.name !== country));
@@ -32,25 +36,20 @@ export const useCountries = (countries) => {
 
   const nextCountries = () => {
     const all = [...allCountries].slice(15);
+    console.log({ all });
     const modified = [...all].slice(0, 15);
-    const shuffled = shuffleArray([...modified]);
+    console.log({ modified });
+    const shuffled = shuffleArray(modified);
+    console.log({ shuffled });
     setAllCountries(all);
     setCurrent(modified);
     setShuffledNames(shuffled);
   };
 
   const newCountries = () => {
-    shuffleArray(countries);
-    setAllCountries(countries);
-    setCurrent([...countries].slice(0, 15));
-    setShuffledNames(shuffleArray([...countries].slice(0, 15)));
+    start(-1);
   };
 
-  const skipAll = () => {
-    setAllCountries([]);
-    setCurrent([]);
-    setShuffledNames([]);
-  };
   return {
     allCountries,
     current,
@@ -59,6 +58,5 @@ export const useCountries = (countries) => {
     removeCountry,
     newCountries,
     stats,
-    skipAll,
   };
 };

@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getCountries, shuffleArray } from "../helpers";
-import Countries from "../components/Country";
+import { getCountries } from "../helpers";
+import Game from "../components/Game";
+import { shuffleArray } from "../helpers";
 
 const Index = (props) => {
   return (
@@ -74,12 +75,7 @@ const Index = (props) => {
       </nav>
       <h1>Adivina las banderas con sus nombres</h1>
       <p>Hacé click en la bandera, después en su nombre.</p>
-      <div>
-        <Countries
-          APIcountries={props.countries}
-          newCountriesMsg={"No hay más países. Empezar de nuevo? "}
-        />
-      </div>
+      <Game countries={props.countries}>Cantidad de países:</Game>
     </>
   );
 };
@@ -88,7 +84,7 @@ export const getStaticProps = async () => {
   const data = await getCountries("spa");
   return {
     props: {
-      countries: data,
+      countries: shuffleArray(data),
     },
   };
 };

@@ -1,3 +1,4 @@
+import { BsArrowRight } from "react-icons/bs";
 const CountryNames = ({ countries, selected }) => {
   return (
     <div className="options-container">
@@ -15,9 +16,10 @@ const CountryNames = ({ countries, selected }) => {
       ))}
       <button
         className="skip-country btn-primary"
+        style={{padding: "0.2rem 1rem"}}
         onClick={countries.nextCountries}
       >
-        {"->"}
+        <BsArrowRight size="50" />
       </button>
     </div>
   );
