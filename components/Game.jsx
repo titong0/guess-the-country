@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { shuffleArray } from "../helpers";
 import Countries from "./Countries";
 import DifficultySelector from "./DifficultySelector";
 
@@ -17,7 +18,7 @@ const Game = (props) => {
       ) : (
         <Countries
           difficulty={difficulty}
-          APIcountries={props.countries}
+          APIcountries={shuffleArray(props.countries)}
           start={start}
         />
       )}
