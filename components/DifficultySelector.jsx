@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./DifficultySelector.module.css";
+import { BiCheck } from "react-icons/bi";
 
 const colors = ["#70c641", "#c3d425", "#f2db01", "#ef9018", "#f44030"];
 const amounts = [15, 30, 60, 120, 250];
@@ -24,8 +25,13 @@ const DifficultySelector = ({ start }) => {
             .fill("")
             .map((i, idx) => {
               if (idx <= counter)
-                return <div style={{ backgroundColor: colors[counter] }}></div>;
-              if (idx > counter) return <div></div>;
+                return (
+                  <div
+                    key={colors[idx]}
+                    style={{ backgroundColor: colors[counter] }}
+                  ></div>
+                );
+              if (idx > counter) return <div key={colors[idx]}></div>;
             })}
         </div>
         <button
@@ -39,7 +45,7 @@ const DifficultySelector = ({ start }) => {
           className={`btn-primary ${styles.startBtn}`}
           onClick={() => start(amounts[counter])}
         >
-          Start
+          <BiCheck size="50" />
         </button>
       </div>
     </>

@@ -17,12 +17,22 @@ const Countries = ({ APIcountries, difficulty, start }) => {
             selected={selected}
             setSelected={setSelected}
           />
-          <CountryNames selected={selected} countries={countries} />
+          <CountryNames
+            selected={selected}
+            countries={countries}
+            start={start}
+            difficulty={difficulty}
+            step={countries.stats.step}
+          />
         </>
       ) : (
         <>
           <Stats stats={countries.stats} />
-          <button className="btn-primary" onClick={countries.newCountries}>
+          <button
+            style={{ width: "90%" }}
+            className="btn-primary"
+            onClick={countries.newCountries}
+          >
             <GrPowerReset size="50" />
           </button>
         </>

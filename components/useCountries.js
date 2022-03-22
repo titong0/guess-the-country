@@ -10,6 +10,7 @@ export const useCountries = (countries, difficulty, start) => {
   const [stats, setStats] = useState({
     misses: 0,
     correct: 0,
+    step: 1,
     startTime: new Date(),
   });
 
@@ -35,12 +36,12 @@ export const useCountries = (countries, difficulty, start) => {
   };
 
   const nextCountries = () => {
+    const copy = { ...stats };
+    copy.step++;
+    setStats(copy);
     const all = [...allCountries].slice(15);
-    console.log({ all });
     const modified = [...all].slice(0, 15);
-    console.log({ modified });
     const shuffled = shuffleArray(modified);
-    console.log({ shuffled });
     setAllCountries(all);
     setCurrent(modified);
     setShuffledNames(shuffled);

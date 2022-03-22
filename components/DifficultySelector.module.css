@@ -55,8 +55,7 @@
 
 .startBtn {
   grid-column: 1 / 4;
-  justify-self: end;
-  width: 200px;
-  padding: 1.5rem 0;
+  justify-self: center;
+  padding: 0 2rem;
   font-size: 2rem;
 }
