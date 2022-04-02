@@ -26,7 +26,6 @@ const Flags = ({ countries, selected, setSelected }) => {
           id="countryOption"
         >
           <img src={i.flagSrc} id="countryOption" alt="" />
-          <span>{i.name}</span>
         </button>
       ))}
     </div>

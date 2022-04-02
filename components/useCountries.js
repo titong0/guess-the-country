@@ -5,7 +5,7 @@ export const useCountries = (countries, difficulty, start) => {
   countries = countries.slice(0, difficulty);
   const [allCountries, setAllCountries] = useState(countries);
   const [current, setCurrent] = useState([...countries].slice(0, 15));
-  const [shuffledNames, setShuffledNames] = useState(current);
+  const [shuffledNames, setShuffledNames] = useState(shuffleArray(current));
 
   console.log({ allCountries, current, countries });
   const [stats, setStats] = useState({
