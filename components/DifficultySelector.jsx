@@ -3,7 +3,7 @@ import styles from "./DifficultySelector.module.css";
 import { BiCheck } from "react-icons/bi";
 
 const colors = ["#70c641", "#c3d425", "#f2db01", "#ef9018", "#f44030"];
-const amounts = [15, 30, 60, 120, 250];
+const amounts = [15, 30, 60, 120, 235];
 
 const DifficultySelector = ({ start }) => {
   const [counter, setCounter] = useState(0);

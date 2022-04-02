@@ -21,8 +21,13 @@ const Stats = ({ stats }) => {
 const FormatTime = (time) => {
   time = time.getTime();
   const diff = new Date().getTime() - time;
-  const minutes = Math.floor(diff / 1000 / 60);
-  const seconds = Math.floor(diff / 1000) % 60;
+
+  const minutes = Math.floor(diff / 1000 / 60)
+    .toString()
+    .padStart(2, "0");
+    
+  const seconds = (Math.floor(diff / 1000) % 60).toString().padStart(2, "0");
+
   const miliseconds = diff.toString().substring(0, 2);
   return `${minutes}:${seconds}.${miliseconds}`;
 };
