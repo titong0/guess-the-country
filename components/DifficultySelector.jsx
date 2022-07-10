@@ -7,6 +7,7 @@ const amounts = [15, 30, 60, 120, 220];
 
 const DifficultySelector = ({ start }) => {
   const [counter, setCounter] = useState(0);
+  const style = { backgroundColor: colors[counter] };
   return (
     <>
       <span style={{ color: colors[counter], fontSize: "2rem" }}>
@@ -22,14 +23,7 @@ const DifficultySelector = ({ start }) => {
         </button>
         <div className={styles.bar}>
           {colors.map((i, idx) => {
-            return (
-              <div
-                key={colors[idx]}
-                style={
-                  idx <= counter ? { backgroundColor: colors[counter] } : {}
-                }
-              ></div>
-            );
+            return <div key={i} style={idx <= counter ? style : {}}></div>;
           })}
         </div>
         <button
