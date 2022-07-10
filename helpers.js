@@ -9,9 +9,10 @@ export const shuffleArray = (array) => {
 };
 
 const filterIslands = (countries) => {
-  return countries.filter(
-    (i) => i.name.common.toLowerCase().indexOf("islands") === -1
+  const noIslands = countries.filter(
+    (i) => i.name.common.toLowerCase().match(/land|territor/) === null
   );
+  return noIslands;
 };
 
 export const getCountries = async (lang) => {
@@ -19,7 +20,7 @@ export const getCountries = async (lang) => {
   const data = await res.json();
 
   const countries = filterIslands(data);
-
+  console.log(countries.length);
   // english names are in country.name.common for some reason
   if (!lang) {
     return countries.map((country) => {

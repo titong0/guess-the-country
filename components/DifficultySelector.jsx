@@ -3,7 +3,7 @@ import styles from "./DifficultySelector.module.css";
 import { BiCheck } from "react-icons/bi";
 
 const colors = ["#70c641", "#c3d425", "#f2db01", "#ef9018", "#f44030"];
-const amounts = [15, 30, 60, 120, 235];
+const amounts = [15, 30, 60, 120, 220];
 
 const DifficultySelector = ({ start }) => {
   const [counter, setCounter] = useState(0);
@@ -21,18 +21,16 @@ const DifficultySelector = ({ start }) => {
           -
         </button>
         <div className={styles.bar}>
-          {Array(5)
-            .fill("")
-            .map((i, idx) => {
-              if (idx <= counter)
-                return (
-                  <div
-                    key={colors[idx]}
-                    style={{ backgroundColor: colors[counter] }}
-                  ></div>
-                );
-              if (idx > counter) return <div key={colors[idx]}></div>;
-            })}
+          {colors.map((i, idx) => {
+            return (
+              <div
+                key={colors[idx]}
+                style={
+                  idx <= counter ? { backgroundColor: colors[counter] } : {}
+                }
+              ></div>
+            );
+          })}
         </div>
         <button
           className={`${styles.control} ${styles.btnDanger}`}

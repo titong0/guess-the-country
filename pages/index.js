@@ -77,11 +77,13 @@ const Index = (props) => {
           />
         </Link>
       </nav>
-      <h1>Guess the country flags </h1>
-      <p>
-        Click on the country flag first. Afterwards, select the option you think
-        is correct from the buttons below
-      </p>
+      <header className="instructions">
+        <h1>Guess the country flags </h1>
+        <p>
+          Click on the country flag first. Afterwards, select the option you
+          think is correct from the buttons below
+        </p>
+      </header>
       <Game countries={props.countries}>Amount of countries:</Game>
     </>
   );

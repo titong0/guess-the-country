@@ -9,7 +9,7 @@ const Game = (props) => {
   return (
     <div>
       {difficulty === -1 ? (
-        <div style={{ backgroundColor: "#2e3f49", paddingTop: "1rem" }}>
+        <div className="difficulty-container">
           <span style={{ marginLeft: "1rem", fontSize: "2rem" }}>
             {props.children}
           </span>

@@ -1,8 +1,10 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
-  align-items: center;
-  justify-items: center;
+  /* align-items: center; */
+  /* justify-items: center; */
+  width: 100%;
+  max-width: 500px;
   height: 200px;
   gap: 0.2rem;
   padding: 1rem;
@@ -24,14 +26,14 @@
 }
 
 .btnSuccess {
-  background-color: #2b8802;
+  background-color: #4dc96e;
 }
 .btnDanger {
-  background-color: #ca0216;
+  background-color: rgb(183, 113, 73);
 }
 .control {
   width: 100%;
-  height: 100%;
+  height: 50px;
   color: white;
   border: 1px solid black;
   font-size: 2rem;
@@ -44,13 +46,7 @@
 
 .control:disabled {
   cursor: auto;
-  background: repeating-linear-gradient(
-    45deg,
-    #606dbc,
-    #606dbc 10px,
-    #465298 10px,
-    #465298 20px
-  );
+  background-color: rgb(145, 145, 145);
 }
 
 .startBtn {
